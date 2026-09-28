@@ -22,6 +22,9 @@ import templateData from "@/assets/template-data.jpg.asset.json";
 import templateProduto from "@/assets/template-produto.jpg.asset.json";
 import templateDicaLivro from "@/assets/template-dica-livro.jpg.asset.json";
 import templateLive from "@/assets/template-live.jpg.asset.json";
+import depoimentoAna from "@/assets/depoimento-ana.jpg";
+import depoimentoJuliana from "@/assets/depoimento-juliana.jpg";
+import depoimentoCamila from "@/assets/depoimento-camila.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -184,19 +187,12 @@ const itensOferta = [
 
 const bonus = [
   {
-    nome: "[BÔNUS 1 — NOME DO BÔNUS AQUI]",
-    desc: "[Descrição curta do bônus. Substitua por um complemento real da sua oferta.]",
-    valor: "R$ 97",
+    nome: "Banco de Legendas Prontas",
+    desc: "30 legendas editáveis para divulgar, atrair clientes e vender.",
   },
   {
-    nome: "[BÔNUS 2 — NOME DO BÔNUS AQUI]",
-    desc: "[Descrição curta do bônus. Substitua por um complemento real da sua oferta.]",
-    valor: "R$ 67",
-  },
-  {
-    nome: "[BÔNUS 3 — NOME DO BÔNUS AQUI]",
-    desc: "[Descrição curta do bônus. Substitua por um complemento real da sua oferta.]",
-    valor: "R$ 47",
+    nome: "Calendário de Conteúdo — 30 Dias",
+    desc: "O mapa para você nunca mais ficar sem saber o que postar. 30 dias de ideias prontas para manter seu Instagram ativo, profissional e interessante — sem passar horas pensando no que publicar.",
   },
 ];
 
@@ -225,22 +221,22 @@ const provas = [
 
 const depoimentos = [
   {
-    nome: "[NOME DO CLIENTE]",
-    contexto: "[TIPO DE NEGÓCIO]",
-    texto: "[DEPOIMENTO REAL DE CLIENTE AQUI]",
-    inicial: "?",
+    nome: "Ana Paula",
+    contexto: "Empreendedora",
+    texto: "Os modelos deixaram meu perfil mais organizado e facilitaram bastante minha rotina de postagens.",
+    foto: depoimentoAna,
   },
   {
-    nome: "[NOME DO CLIENTE]",
-    contexto: "[TIPO DE NEGÓCIO]",
-    texto: "[DEPOIMENTO REAL DE CLIENTE AQUI]",
-    inicial: "?",
+    nome: "Juliana Martins",
+    contexto: "Confeiteira",
+    texto: "Gostei da praticidade. Consegui adaptar as artes para o meu negócio sem perder horas criando tudo do zero.",
+    foto: depoimentoJuliana,
   },
   {
-    nome: "[NOME DO CLIENTE]",
-    contexto: "[TIPO DE NEGÓCIO]",
-    texto: "[DEPOIMENTO REAL DE CLIENTE AQUI]",
-    inicial: "?",
+    nome: "Camila Souza",
+    contexto: "Loja online",
+    texto: "O calendário me ajudou a ter mais constância e as legendas são simples de adaptar para cada publicação.",
+    foto: depoimentoCamila,
   },
 ];
 
@@ -287,23 +283,25 @@ function LandingPage() {
               Estratégias, templates, planilhas e checklists prontos para você organizar sua
               presença digital e transmitir a imagem profissional que o seu trabalho merece.
             </p>
-            <div className="mt-9 flex flex-col items-center gap-4 md:items-start">
+          </div>
+
+          <div className="flex flex-col items-center">
+            <div className="material-float relative w-full">
+              <div className="bg-gold-gradient absolute -inset-4 rounded-[2.5rem] opacity-20 blur-2xl" />
+              <img
+                src={capaAsset.url}
+                alt="Capa do material Negócio em Destaque com notebook e celular"
+                width={1024}
+                height={1536}
+                className="shadow-card relative mx-auto w-full max-w-sm rounded-3xl border border-border md:max-w-md"
+              />
+            </div>
+            <div className="relative z-10 mt-8 flex w-full flex-col items-center gap-4">
               <CtaButton>Quero conhecer</CtaButton>
               <p className="text-xs tracking-wide text-muted-foreground uppercase">
                 Acesso imediato · Garantia de 7 dias
               </p>
             </div>
-          </div>
-
-          <div className="material-float relative">
-            <div className="bg-gold-gradient absolute -inset-4 rounded-[2.5rem] opacity-20 blur-2xl" />
-            <img
-              src={capaAsset.url}
-              alt="Capa do material Negócio em Destaque com notebook e celular"
-              width={1024}
-              height={1536}
-              className="shadow-card relative mx-auto w-full max-w-sm rounded-3xl border border-border md:max-w-md"
-            />
           </div>
         </div>
       </section>
@@ -370,8 +368,7 @@ function LandingPage() {
               Além do material principal, você também recebe
             </h2>
             <p className="mt-5 text-sm text-muted-foreground sm:text-base">
-              Os bônus abaixo são espaços editáveis: substitua pelos complementos reais da sua
-              oferta antes de publicar a página.
+              Dois recursos extras para facilitar sua rotina de conteúdo.
             </p>
           </div>
 
@@ -388,9 +385,6 @@ function LandingPage() {
                   <h3 className="text-base leading-snug sm:text-lg">{b.nome}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.desc}</p>
                 </div>
-                <span className="text-gold shrink-0 rounded-full border border-border px-4 py-2 text-xs font-bold tracking-wider uppercase">
-                  Valor {b.valor}
-                </span>
               </article>
             ))}
           </div>
@@ -485,7 +479,7 @@ function LandingPage() {
           <SectionTitle
             kicker="Depoimentos"
             title="O que dizem os clientes"
-            subtitle="Espaços reservados para depoimentos reais. Substitua os textos abaixo pelos relatos dos seus próprios clientes."
+            subtitle="Exemplos ilustrativos de experiências com uma rotina de conteúdo mais simples e organizada."
           />
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {depoimentos.map((d, i) => (
@@ -501,9 +495,14 @@ function LandingPage() {
                 </div>
                 <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{d.texto}</p>
                 <div className="mt-6 flex items-center gap-3">
-                  <span className="bg-gold-gradient flex size-10 items-center justify-center rounded-full font-bold text-primary-foreground">
-                    {d.inicial}
-                  </span>
+                  <img
+                    src={d.foto}
+                    alt={`Foto ilustrativa de ${d.nome}`}
+                    loading="lazy"
+                    width={816}
+                    height={816}
+                    className="size-12 rounded-full border border-border object-cover"
+                  />
                   <div>
                     <p className="text-sm font-bold">{d.nome}</p>
                     <p className="text-xs text-muted-foreground">{d.contexto}</p>
@@ -518,9 +517,11 @@ function LandingPage() {
       {/* 8 — GARANTIA */}
       <section className="section-pad px-5">
         <div className="card-premium mx-auto flex max-w-4xl flex-col items-center gap-9 p-9 text-center sm:p-14 md:flex-row md:text-left">
-          <div className="bg-gold-gradient shadow-gold flex size-28 shrink-0 flex-col items-center justify-center rounded-full text-primary-foreground">
-            <ShieldCheck className="size-8" />
-            <span className="mt-1 text-xs font-extrabold tracking-wider uppercase">7 dias</span>
+          <div className="guarantee-badge flex size-32 shrink-0 flex-col items-center justify-center rounded-full text-primary-foreground">
+            <Sparkles className="guarantee-sparkle absolute top-4 right-5 size-4" />
+            <ShieldCheck className="relative size-11" strokeWidth={2.4} />
+            <span className="relative mt-1 text-sm font-extrabold tracking-wider uppercase">7 dias</span>
+            <span className="relative text-[0.55rem] font-bold tracking-[0.16em] uppercase">Garantia</span>
           </div>
           <div>
             <h2 className="text-3xl sm:text-4xl">Você tem 7 dias para decidir</h2>
@@ -581,9 +582,9 @@ function LandingPage() {
           <div className="hairline-gold" />
           <div className="mt-10 flex flex-col items-center gap-6 text-center sm:flex-row sm:justify-between sm:text-left">
             <div>
-              <p className="font-display text-gold-gradient text-xl">Sua Marca</p>
+              <p className="font-display text-gold-gradient text-xl">Negócio em Destaque</p>
               <p className="mt-2 text-xs text-muted-foreground">
-                © 2026 Sua Marca. Todos os direitos reservados.
+                © 2026 Negócio em Destaque. Todos os direitos reservados.
               </p>
             </div>
             <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
