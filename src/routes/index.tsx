@@ -383,50 +383,49 @@ function LandingPage() {
 
       {/* 5 — OFERTA */}
       <section id="oferta" className="section-pad px-5" style={{ backgroundColor: "var(--surface)" }}>
-        <div className="mx-auto max-w-3xl">
-          <SectionTitle kicker="A oferta" title="Acesso completo ao Negócio em Destaque" />
-          <div className="card-premium shadow-gold mt-12 p-8 sm:p-12">
-            <ul className="space-y-4">
-              {[
-                "Guia principal Negócio em Destaque",
-                "Pacote de templates editáveis para redes sociais",
-                "Planilhas de controle e planejamento",
-                "Checklists de execução",
-                "Os 3 bônus da seção anterior",
-                "Acesso digital imediato e atualizações futuras",
-              ].map((item) => (
-                <li key={item} className="flex gap-3 text-sm sm:text-base">
-                  <Check className="text-gold mt-0.5 size-5 shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+        <div className="mx-auto max-w-5xl">
+          <SectionTitle
+            kicker="A oferta"
+            title="Tenha tudo o que precisa para manter seu Instagram ativo"
+            subtitle="Artes profissionais + legendas prontas + 30 dias de ideias de conteúdo."
+          />
 
-            <div className="mt-10 border-t border-border pt-8 text-center">
-              <p className="text-sm text-muted-foreground">
-                Valor de referência{" "}
-                <span className="line-through">R$ 197</span>
-              </p>
-              <p className="mt-2 text-xs tracking-[0.2em] text-muted-foreground uppercase">
-                Hoje por
-              </p>
-              <p className="text-gold-gradient font-display mt-1 text-6xl sm:text-7xl">R$ 47</p>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Pagamento único · Pix, boleto ou cartão em até 12x
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                [Ajuste os valores e as formas de pagamento conforme a sua oferta real.]
-              </p>
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {itensOferta.map((item) => (
+              <article key={item.nome} className="card-premium flex flex-col p-7">
+                <span className="text-gold self-start rounded-full border border-border px-3 py-1 text-[0.65rem] font-bold tracking-[0.2em] uppercase">
+                  {item.etiqueta}
+                </span>
+                <h3 className="mt-5 text-lg leading-snug sm:text-xl">{item.nome}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {item.descricao}
+                </p>
+              </article>
+            ))}
+          </div>
 
-              <div className="mt-8">
-                <CtaButton href="#oferta" className="w-full">
-                  Quero garantir meu acesso
-                </CtaButton>
-              </div>
-              <p className="mt-5 flex items-center justify-center gap-2 text-xs text-muted-foreground">
-                <ShieldCheck className="text-gold size-4" /> Compra segura e garantia
-                incondicional de 7 dias
-              </p>
+          <div className="card-premium shadow-gold mt-12 p-8 text-center sm:p-12">
+            <span className="bg-gold-gradient inline-flex items-center rounded-full px-5 py-2 text-xs font-extrabold tracking-[0.2em] text-primary-foreground uppercase">
+              Oferta especial
+            </span>
+
+            <p className="text-destructive mt-8 text-2xl font-bold line-through decoration-2 sm:text-3xl">
+              R$ 49,90
+            </p>
+
+            <p className="mt-4 text-xs font-bold tracking-[0.3em] text-muted-foreground uppercase sm:text-sm">
+              Por apenas
+            </p>
+            <p className="text-gold-gradient font-display mt-2 text-7xl sm:text-8xl">R$ 29,90</p>
+
+            <p className="mt-5 text-sm font-semibold tracking-wide text-muted-foreground sm:text-base">
+              Pagamento único • Acesso imediato
+            </p>
+
+            <div className="mt-9">
+              <CtaButton href="#oferta" className="w-full sm:w-auto">
+                Quero acessar agora
+              </CtaButton>
             </div>
           </div>
         </div>
