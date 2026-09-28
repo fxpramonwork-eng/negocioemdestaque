@@ -197,6 +197,28 @@
   }
 }
 
+@keyframes guarantee-shine {
+  0%,
+  100% {
+    box-shadow: 0 0 0 5px oklch(0.82 0.15 88 / 10%), 0 0 32px oklch(0.82 0.15 88 / 45%);
+  }
+  50% {
+    box-shadow: 0 0 0 8px oklch(0.92 0.09 95 / 14%), 0 0 50px oklch(0.92 0.12 95 / 68%);
+  }
+}
+
+@keyframes guarantee-sparkle {
+  0%,
+  100% {
+    transform: scale(0.85) rotate(0deg);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.25) rotate(18deg);
+    opacity: 1;
+  }
+}
+
 .cta-float {
   animation: cta-float 2.8s ease-in-out infinite;
 }
@@ -234,12 +256,37 @@
   transform: scale(1.08);
 }
 
+.guarantee-badge {
+  position: relative;
+  isolation: isolate;
+  background-image: var(--gradient-gold);
+  border: 2px solid var(--gold-soft);
+  outline: 1px solid var(--gold-deep);
+  outline-offset: 5px;
+  animation: guarantee-shine 2.6s ease-in-out infinite;
+}
+
+.guarantee-badge::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  z-index: -1;
+  border: 1px solid oklch(0.16 0.01 90 / 30%);
+  border-radius: inherit;
+}
+
+.guarantee-sparkle {
+  animation: guarantee-sparkle 1.9s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cta-float,
   .material-float,
   .material-card-a,
   .material-card-b,
-  .floating-buy {
+  .floating-buy,
+  .guarantee-badge,
+  .guarantee-sparkle {
     animation: none;
   }
 
