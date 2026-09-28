@@ -24,6 +24,8 @@ import templateData from "@/assets/template-data.jpg.asset.json";
 import templateProduto from "@/assets/template-produto.jpg.asset.json";
 import templateDicaLivro from "@/assets/template-dica-livro.jpg.asset.json";
 import templateLive from "@/assets/template-live.jpg.asset.json";
+import bonusLegendas from "@/assets/bonus-legendas-prontas.jpeg.asset.json";
+import bonusCalendario from "@/assets/bonus-calendario-conteudo.jpeg.asset.json";
 import depoimentoJuliana from "@/assets/depoimento-juliana.jpg";
 import depoimentoCamila from "@/assets/depoimento-camila.jpg";
 import depoimentoRafael from "@/assets/depoimento-rafael.jpg";
@@ -247,10 +249,12 @@ const bonus = [
   {
     nome: "Banco de Legendas Prontas",
     desc: "30 legendas editáveis para divulgar, atrair clientes e vender.",
+    imagem: bonusLegendas.url,
   },
   {
     nome: "Calendário de Conteúdo — 30 Dias",
     desc: "O mapa para você nunca mais ficar sem saber o que postar. 30 dias de ideias prontas para manter seu Instagram ativo, profissional e interessante — sem passar horas pensando no que publicar.",
+    imagem: bonusCalendario.url,
   },
 ];
 
@@ -438,18 +442,28 @@ function LandingPage() {
             </p>
           </div>
 
-          <div className="mt-12 space-y-5">
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
             {bonus.map((b, i) => (
               <article
                 key={b.nome}
-                className="card-premium flex flex-col gap-5 p-7 sm:flex-row sm:items-center"
+                className="card-premium material-card overflow-hidden"
               >
-                <span className="text-gold font-display text-4xl leading-none">
-                  0{i + 1}
-                </span>
-                <div className="flex-1">
-                  <h3 className="text-base leading-snug sm:text-lg">{b.nome}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.desc}</p>
+                <img
+                  src={b.imagem}
+                  alt={`Capa do bônus ${b.nome}`}
+                  loading="lazy"
+                  width={1024}
+                  height={1536}
+                  className="material-image aspect-[2/3] w-full object-cover"
+                />
+                <div className="flex gap-5 p-7">
+                  <span className="text-gold font-display text-4xl leading-none">
+                    0{i + 1}
+                  </span>
+                  <div className="flex-1">
+                    <h3 className="text-base leading-snug sm:text-lg">{b.nome}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.desc}</p>
+                  </div>
                 </div>
               </article>
             ))}
