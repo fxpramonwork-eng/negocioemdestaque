@@ -24,7 +24,6 @@ import templateData from "@/assets/template-data.jpg.asset.json";
 import templateProduto from "@/assets/template-produto.jpg.asset.json";
 import templateDicaLivro from "@/assets/template-dica-livro.jpg.asset.json";
 import templateLive from "@/assets/template-live.jpg.asset.json";
-import depoimentoAna from "@/assets/depoimento-ana.jpg";
 import depoimentoJuliana from "@/assets/depoimento-juliana.jpg";
 import depoimentoCamila from "@/assets/depoimento-camila.jpg";
 import depoimentoRafael from "@/assets/depoimento-rafael.jpg";
