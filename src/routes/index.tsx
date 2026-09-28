@@ -18,11 +18,6 @@ import {
 } from "lucide-react";
 
 import capaAsset from "@/assets/negocio-em-destaque.png.asset.json";
-import mockupKit from "@/assets/mockup-kit.jpg";
-import mockupTemplates from "@/assets/mockup-templates.jpg";
-import mockupPlanilhas from "@/assets/mockup-planilhas.jpg";
-import mockupChecklists from "@/assets/mockup-checklists.jpg";
-import mockupAulas from "@/assets/mockup-aulas.jpg";
 import templateData from "@/assets/template-data.jpg.asset.json";
 import templateProduto from "@/assets/template-produto.jpg.asset.json";
 import templateDicaLivro from "@/assets/template-dica-livro.jpg.asset.json";
