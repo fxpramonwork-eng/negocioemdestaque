@@ -161,6 +161,25 @@ const beneficios = [
   },
 ];
 
+const itensOferta = [
+  {
+    etiqueta: "Produto principal",
+    nome: "Negócio em Destaque",
+    descricao:
+      "Artes profissionais editáveis no Canva para divulgar seu negócio no Instagram.",
+  },
+  {
+    etiqueta: "Bônus",
+    nome: "Banco de Legendas que Vendem",
+    descricao: "30 modelos de legendas prontas para adaptar ao seu negócio.",
+  },
+  {
+    etiqueta: "Bônus",
+    nome: "Calendário de Conteúdo — 30 Dias",
+    descricao: "Um mapa de conteúdo para saber o que postar todos os dias.",
+  },
+];
+
 const bonus = [
   {
     nome: "[BÔNUS 1 — NOME DO BÔNUS AQUI]",
