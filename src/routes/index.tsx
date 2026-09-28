@@ -15,9 +15,11 @@ import {
   Palette,
   TrendingUp,
   ShoppingBag,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
-import capaAsset from "@/assets/negocio-em-destaque.png.asset.json";
+import capaAsset from "@/assets/negocio-em-destaque-novo.png.asset.json";
 import templateData from "@/assets/template-data.jpg.asset.json";
 import templateProduto from "@/assets/template-produto.jpg.asset.json";
 import templateDicaLivro from "@/assets/template-dica-livro.jpg.asset.json";
@@ -25,6 +27,7 @@ import templateLive from "@/assets/template-live.jpg.asset.json";
 import depoimentoAna from "@/assets/depoimento-ana.jpg";
 import depoimentoJuliana from "@/assets/depoimento-juliana.jpg";
 import depoimentoCamila from "@/assets/depoimento-camila.jpg";
+import depoimentoRafael from "@/assets/depoimento-rafael.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -277,10 +280,10 @@ const provas = [
 
 const depoimentos = [
   {
-    nome: "Ana Paula",
-    contexto: "Empreendedora",
+    nome: "Rafael Oliveira",
+    contexto: "Empreendedor",
     texto: "Os modelos deixaram meu perfil mais organizado e facilitaram bastante minha rotina de postagens.",
-    foto: depoimentoAna,
+    foto: depoimentoRafael,
   },
   {
     nome: "Juliana Martins",
@@ -321,6 +324,12 @@ const faq = [
 
 function LandingPage() {
   const [aberta, setAberta] = useState<number | null>(0);
+  const [provaAtiva, setProvaAtiva] = useState(0);
+  const prova = provas[provaAtiva];
+
+  const navegarProva = (direcao: number) => {
+    setProvaAtiva((atual) => (atual + direcao + provas.length) % provas.length);
+  };
 
   return (
     <main className="bg-dark-glow min-h-screen">
@@ -348,10 +357,10 @@ function LandingPage() {
               <div className="bg-gold-gradient absolute -inset-4 rounded-[2.5rem] opacity-20 blur-2xl" />
               <img
                 src={capaAsset.url}
-                alt="Capa do material Negócio em Destaque com notebook e celular"
+                alt="Negócio em Destaque com artes profissionais editáveis exibidas em notebook e celular"
                 width={1024}
-                height={1536}
-                className="shadow-card relative mx-auto w-full max-w-sm rounded-3xl border border-border md:max-w-md"
+                height={768}
+                className="shadow-card relative mx-auto aspect-[4/3] w-full max-w-lg rounded-3xl border border-border object-cover"
               />
             </div>
             <div className="relative z-10 mt-8 flex w-full flex-col items-center gap-4">
@@ -507,27 +516,45 @@ function LandingPage() {
             title="Veja o material por dentro"
             subtitle="Quatro exemplos do que você encontra no acesso, para você saber exatamente o formato e o acabamento do que vai receber."
           />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2">
-            {provas.map((p, i) => (
-              <figure
-                key={p.titulo}
-                className={`material-card card-premium overflow-hidden ${i % 2 === 0 ? "material-card-a" : "material-card-b"}`}
-              >
+          {prova ? (
+            <div className="mx-auto mt-14 max-w-xl">
+              <figure key={prova.titulo} className="material-card card-premium animate-fade-in overflow-hidden">
                 <img
-                  src={p.img}
-                  alt={p.titulo}
+                  src={prova.img}
+                  alt={prova.titulo}
                   loading="lazy"
                   className="material-image aspect-square w-full object-cover"
                 />
                 <figcaption className="p-6">
-                  <h3 className="text-base sm:text-lg">{p.titulo}</h3>
+                  <h3 className="text-base sm:text-lg">{prova.titulo}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {p.legenda}
+                    {prova.legenda}
                   </p>
                 </figcaption>
               </figure>
-            ))}
-          </div>
+              <div className="mt-6 flex items-center justify-center gap-5">
+                <button
+                  type="button"
+                  onClick={() => navegarProva(-1)}
+                  aria-label="Ver material anterior"
+                  className="flex size-12 items-center justify-center rounded-full border border-border bg-surface text-gold transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                >
+                  <ChevronLeft className="size-6" />
+                </button>
+                <span className="min-w-14 text-center text-sm font-bold text-muted-foreground" aria-live="polite">
+                  {provaAtiva + 1} / {provas.length}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => navegarProva(1)}
+                  aria-label="Ver próximo material"
+                  className="flex size-12 items-center justify-center rounded-full border border-border bg-surface text-gold transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                >
+                  <ChevronRight className="size-6" />
+                </button>
+              </div>
+            </div>
+          ) : null}
         </div>
       </section>
 
