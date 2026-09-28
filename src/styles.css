@@ -156,3 +156,94 @@
   );
   height: 1px;
 }
+
+@keyframes cta-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes material-float-a {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-0.35deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0.35deg);
+  }
+}
+
+@keyframes material-float-b {
+  0%,
+  100% {
+    transform: translateY(-6px) rotate(0.3deg);
+  }
+  50% {
+    transform: translateY(4px) rotate(-0.3deg);
+  }
+}
+
+@keyframes floating-buy {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-7px) scale(1.04);
+  }
+}
+
+.cta-float {
+  animation: cta-float 2.8s ease-in-out infinite;
+}
+
+.cta-float:hover,
+.cta-float:focus-visible {
+  animation-play-state: paused;
+}
+
+.material-float,
+.material-card-a {
+  animation: material-float-a 6s ease-in-out infinite;
+}
+
+.material-card-b {
+  animation: material-float-b 6.8s ease-in-out infinite;
+}
+
+.material-image {
+  transition: transform 700ms ease;
+}
+
+.material-card:hover .material-image {
+  transform: scale(1.045);
+}
+
+.floating-buy {
+  animation: floating-buy 2.4s ease-in-out infinite;
+  border: 1px solid var(--gold-soft);
+}
+
+.floating-buy:hover,
+.floating-buy:focus-visible {
+  animation-play-state: paused;
+  transform: scale(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-float,
+  .material-float,
+  .material-card-a,
+  .material-card-b,
+  .floating-buy {
+    animation: none;
+  }
+
+  .material-image {
+    transition: none;
+  }
+}
