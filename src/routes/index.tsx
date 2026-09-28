@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Clock,
   Sparkles,
@@ -52,6 +52,62 @@ export const Route = createFileRoute("/")({
 });
 
 const CTA_LINK = "https://pay.cakto.com.br/7q28sjr_1104493";
+
+function UrgencyBanner() {
+  const [tempo, setTempo] = useState({ horas: "00", minutos: "00", segundos: "00" });
+
+  useEffect(() => {
+    const atualizar = () => {
+      const agora = new Date();
+      const fimDoDia = new Date(agora);
+      fimDoDia.setHours(23, 59, 59, 999);
+      const restante = Math.max(0, fimDoDia.getTime() - agora.getTime());
+
+      setTempo({
+        horas: String(Math.floor(restante / 3_600_000)).padStart(2, "0"),
+        minutos: String(Math.floor((restante % 3_600_000) / 60_000)).padStart(2, "0"),
+        segundos: String(Math.floor((restante % 60_000) / 1_000)).padStart(2, "0"),
+      });
+    };
+
+    atualizar();
+    const intervalo = window.setInterval(atualizar, 1_000);
+    return () => window.clearInterval(intervalo);
+  }, []);
+
+  return (
+    <aside aria-label="Desconto exclusivo de hoje" className="border-b border-border bg-surface">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-3 px-4 py-4 text-center sm:flex-row sm:gap-6">
+        <div className="flex items-center gap-2">
+          <Clock className="text-gold size-5 shrink-0" />
+          <p className="text-sm font-extrabold uppercase sm:text-base">
+            Desconto exclusivo <span className="text-gold">apenas hoje</span>
+          </p>
+        </div>
+        <div className="flex items-center gap-1.5 font-display" aria-live="polite">
+          {[
+            [tempo.horas, "h"],
+            [tempo.minutos, "min"],
+            [tempo.segundos, "s"],
+          ].map(([valor, unidade], index) => (
+            <div key={unidade} className="flex items-center gap-1.5">
+              {index > 0 ? <span className="text-gold text-lg">:</span> : null}
+              <span className="min-w-12 rounded-md border border-border bg-background px-2 py-1 text-xl text-gold">
+                {valor}
+                <span className="ml-0.5 font-sans text-[0.55rem] text-muted-foreground uppercase">
+                  {unidade}
+                </span>
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <p className="border-t border-border bg-primary px-4 py-2 text-center text-xs font-extrabold tracking-wide text-primary-foreground uppercase sm:text-sm">
+        Oferta limitada • Pagamento único • Acesso imediato
+      </p>
+    </aside>
+  );
+}
 
 function CtaButton({
   children,
@@ -268,6 +324,8 @@ function LandingPage() {
 
   return (
     <main className="bg-dark-glow min-h-screen">
+      <UrgencyBanner />
+
       {/* 1 — HERO */}
       <section className="relative overflow-hidden px-5 pt-14 pb-16 sm:pt-20 md:pb-24">
         <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
