@@ -14,6 +14,7 @@ import {
   Download,
   Palette,
   TrendingUp,
+  ShoppingBag,
 } from "lucide-react";
 
 import capaAsset from "@/assets/negocio-em-destaque.png.asset.json";
@@ -22,6 +23,10 @@ import mockupTemplates from "@/assets/mockup-templates.jpg";
 import mockupPlanilhas from "@/assets/mockup-planilhas.jpg";
 import mockupChecklists from "@/assets/mockup-checklists.jpg";
 import mockupAulas from "@/assets/mockup-aulas.jpg";
+import templateData from "@/assets/template-data.jpg.asset.json";
+import templateProduto from "@/assets/template-produto.jpg.asset.json";
+import templateDicaLivro from "@/assets/template-dica-livro.jpg.asset.json";
+import templateLive from "@/assets/template-live.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -48,7 +53,7 @@ export const Route = createFileRoute("/")({
   component: LandingPage,
 });
 
-const CTA_LINK = "#oferta";
+const CTA_LINK = "https://pay.cakto.com.br/7q28sjr_1104493";
 
 function CtaButton({
   children,
@@ -62,7 +67,9 @@ function CtaButton({
   return (
     <a
       href={href}
-      className={`bg-gold-gradient shadow-gold inline-flex w-full items-center justify-center rounded-full px-8 py-4 text-center text-base font-extrabold tracking-wide text-primary-foreground uppercase transition-transform duration-200 hover:scale-[1.02] active:scale-[0.99] sm:w-auto sm:px-10 sm:py-5 sm:text-lg ${className}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`cta-float bg-gold-gradient shadow-gold inline-flex w-full items-center justify-center rounded-full px-8 py-4 text-center text-base font-extrabold tracking-wide text-primary-foreground uppercase transition-transform duration-200 hover:scale-[1.03] active:scale-[0.99] sm:w-auto sm:px-10 sm:py-5 sm:text-lg ${className}`}
     >
       {children}
     </a>
@@ -200,29 +207,24 @@ const bonus = [
 
 const provas = [
   {
-    img: mockupKit,
-    titulo: "Guia principal",
-    legenda: "Conteúdo organizado por etapas, leitura leve no celular ou no computador.",
+    img: templateData.url,
+    titulo: "Post para datas especiais",
+    legenda: "Arte editável para personalizar datas, imagens e o perfil do seu negócio.",
   },
   {
-    img: mockupTemplates,
-    titulo: "Templates de posts",
-    legenda: "Artes editáveis com padrão visual pronto para publicar.",
+    img: templateProduto.url,
+    titulo: "Post de produto e promoção",
+    legenda: "Modelo pronto para destacar produtos, descontos e chamadas comerciais.",
   },
   {
-    img: mockupPlanilhas,
-    titulo: "Planilhas de controle",
-    legenda: "Acompanhe entradas, saídas e planejamento em um só lugar.",
+    img: templateDicaLivro.url,
+    titulo: "Post de dica e conteúdo",
+    legenda: "Estrutura visual para compartilhar recomendações e gerar conexão.",
   },
   {
-    img: mockupChecklists,
-    titulo: "Checklists imprimíveis",
-    legenda: "Listas para revisar cada etapa antes de colocar no ar.",
-  },
-  {
-    img: mockupAulas,
-    titulo: "Materiais complementares",
-    legenda: "Recursos extras para aplicar o conteúdo com mais facilidade.",
+    img: templateLive.url,
+    titulo: "Post para divulgar lives",
+    legenda: "Layout editável para anunciar tema, data, horário e participantes.",
   },
 ];
 
@@ -298,7 +300,7 @@ function LandingPage() {
             </div>
           </div>
 
-          <div className="relative">
+          <div className="material-float relative">
             <div className="bg-gold-gradient absolute -inset-4 rounded-[2.5rem] opacity-20 blur-2xl" />
             <img
               src={capaAsset.url}
@@ -442,7 +444,7 @@ function LandingPage() {
             </p>
 
             <div className="mt-9">
-              <CtaButton href="#oferta" className="w-full sm:w-auto">
+              <CtaButton className="w-full sm:w-auto">
                 Quero acessar agora
               </CtaButton>
             </div>
@@ -456,16 +458,19 @@ function LandingPage() {
           <SectionTitle
             kicker="Prova visual"
             title="Veja o material por dentro"
-            subtitle="Cinco exemplos do que você encontra no acesso, para você saber exatamente o formato e o acabamento do que vai receber."
+            subtitle="Quatro exemplos do que você encontra no acesso, para você saber exatamente o formato e o acabamento do que vai receber."
           />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {provas.map((p) => (
-              <figure key={p.titulo} className="card-premium overflow-hidden">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2">
+            {provas.map((p, i) => (
+              <figure
+                key={p.titulo}
+                className={`material-card card-premium overflow-hidden ${i % 2 === 0 ? "material-card-a" : "material-card-b"}`}
+              >
                 <img
                   src={p.img}
                   alt={p.titulo}
                   loading="lazy"
-                  className="aspect-square w-full object-cover"
+                  className="material-image aspect-square w-full object-cover"
                 />
                 <figcaption className="p-6">
                   <h3 className="text-base sm:text-lg">{p.titulo}</h3>
@@ -600,6 +605,16 @@ function LandingPage() {
           </div>
         </div>
       </footer>
+
+      <a
+        href={CTA_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Comprar Negócio em Destaque"
+        className="floating-buy bg-gold-gradient shadow-gold fixed right-4 bottom-4 z-50 flex size-14 items-center justify-center rounded-full text-primary-foreground sm:right-6 sm:bottom-6 sm:size-16"
+      >
+        <ShoppingBag className="size-6 sm:size-7" />
+      </a>
     </main>
   );
 }
