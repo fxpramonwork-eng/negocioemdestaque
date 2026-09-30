@@ -80,8 +80,8 @@ function UrgencyBanner() {
   }, []);
 
   return (
-    <aside aria-label="Desconto exclusivo de hoje" className="border-b border-border bg-surface">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-3 px-4 py-4 text-center sm:flex-row sm:gap-6">
+    <aside aria-label="Desconto exclusivo de hoje" className="urgency-bar border-b border-border bg-surface">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-3 px-4 py-3 text-center sm:flex-row sm:gap-8">
         <div className="flex items-center gap-2">
           <Clock className="text-gold size-5 shrink-0" />
           <p className="text-sm font-extrabold uppercase sm:text-base">
@@ -96,7 +96,7 @@ function UrgencyBanner() {
           ].map(([valor, unidade], index) => (
             <div key={unidade} className="flex items-center gap-1.5">
               {index > 0 ? <span className="text-gold text-lg">:</span> : null}
-              <span className="min-w-12 rounded-md border border-border bg-background px-2 py-1 text-xl text-gold">
+               <span className="min-w-12 rounded-sm border border-border bg-background px-2 py-1 text-xl text-gold">
                 {valor}
                 <span className="ml-0.5 font-sans text-[0.55rem] text-muted-foreground uppercase">
                   {unidade}
@@ -127,7 +127,7 @@ function CtaButton({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`cta-float bg-gold-gradient shadow-gold inline-flex w-full items-center justify-center rounded-full px-8 py-4 text-center text-base font-extrabold tracking-wide text-primary-foreground uppercase transition-transform duration-200 hover:scale-[1.03] active:scale-[0.99] sm:w-auto sm:px-10 sm:py-5 sm:text-lg ${className}`}
+      className={`cta-float bg-gold-gradient shadow-gold inline-flex w-full items-center justify-center rounded-lg border border-gold-soft px-8 py-4 text-center text-base font-extrabold tracking-wide text-primary-foreground uppercase transition-transform duration-200 hover:scale-[1.03] active:scale-[0.99] sm:w-auto sm:px-10 sm:py-5 sm:text-lg ${className}`}
     >
       {children}
     </a>
@@ -144,13 +144,13 @@ function SectionTitle({
   subtitle?: string;
 }) {
   return (
-    <div className="mx-auto max-w-3xl text-center">
+    <div className="section-heading max-w-3xl border-l-4 border-gold pl-5 text-left">
       {kicker ? (
         <span className="text-gold text-xs font-bold tracking-[0.3em] uppercase">
           {kicker}
         </span>
       ) : null}
-      <h2 className="mt-4 text-3xl leading-tight sm:text-4xl md:text-5xl">{title}</h2>
+      <h2 className="mt-3 text-3xl leading-tight sm:text-4xl md:text-5xl">{title}</h2>
       {subtitle ? (
         <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
           {subtitle}
@@ -359,19 +359,19 @@ function LandingPage() {
         <div className="hero-image-fade" aria-hidden="true" />
 
         <div className="relative z-10 mx-auto flex min-h-[calc(100svh-7rem)] max-w-6xl flex-col px-5 pt-12 pb-0 sm:pt-16 lg:justify-center lg:py-16">
-          <div className="hero-copy text-center lg:max-w-[56%] lg:text-left">
-            <span className="text-gold inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-4 py-2 text-[0.7rem] font-bold tracking-[0.2em] uppercase backdrop-blur-sm">
+          <div className="hero-copy text-left lg:max-w-[54%]">
+            <span className="text-gold inline-flex items-center gap-2 rounded-lg border border-border bg-background/70 px-4 py-2 text-[0.7rem] font-bold tracking-[0.2em] uppercase backdrop-blur-sm">
               <Sparkles className="size-3.5" /> Material digital
             </span>
             <h1 className="mt-6 text-4xl leading-[0.95] sm:text-5xl lg:text-6xl xl:text-7xl">
               Coloque o seu <span className="text-gold-gradient">negócio em destaque</span> sem começar tudo do zero
             </h1>
-            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0">
+            <p className="mt-6 max-w-xl border-l-2 border-gold/50 pl-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
               Estratégias, templates, planilhas e checklists prontos para você organizar sua
               presença digital e transmitir a imagem profissional que o seu trabalho merece.
             </p>
-            <div className="mt-8 flex w-full flex-col items-center gap-4 lg:items-start">
-              <CtaButton>Quero conhecer</CtaButton>
+            <div className="mt-8 flex w-full flex-col items-start gap-4">
+              <CtaButton>Quero meu negócio em destaque</CtaButton>
               <p className="text-xs tracking-wide text-muted-foreground uppercase">
                 Acesso imediato • Garantia de 7 dias
               </p>
@@ -392,12 +392,15 @@ function LandingPage() {
             title="Tudo o que vem dentro do kit"
             subtitle="Nada de promessa vaga: veja exatamente quais arquivos entram no seu acesso e como usar cada um deles."
           />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {entregaveis.map((item) => (
+           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+             {entregaveis.map((item, index) => (
               <article key={item.title} className="card-premium p-7">
-                <span className="bg-gold-gradient flex size-11 items-center justify-center rounded-xl">
+                 <div className="flex items-center justify-between">
+                 <span className="bg-gold-gradient flex size-11 items-center justify-center rounded-lg">
                   <item.icon className="size-5 text-primary-foreground" />
                 </span>
+                 <span className="font-display text-4xl text-gold/20">0{index + 1}</span>
+                 </div>
                 <h3 className="mt-5 text-lg leading-snug">{item.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
               </article>
@@ -407,21 +410,20 @@ function LandingPage() {
       </section>
 
       {/* 3 — POR QUE ESCOLHER */}
-      <section className="section-pad px-5" style={{ backgroundColor: "var(--surface)" }}>
+      <section className="section-pad section-surface px-5">
         <div className="mx-auto max-w-6xl">
           <SectionTitle
             kicker="Por que escolher este material"
             title="O que muda na sua rotina"
             subtitle="O foco não é acumular arquivos, é reduzir esforço e deixar o seu negócio mais organizado e mais bem apresentado."
           />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {beneficios.map((b) => (
+           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+             {beneficios.map((b, index) => (
               <article
                 key={b.title}
-                className="rounded-2xl border border-border p-7"
-                style={{ backgroundColor: "var(--surface-2)" }}
+                className="showcase-card rounded-lg border border-border p-7"
               >
-                <b.icon className="text-gold size-6" />
+                 <div className="flex items-center justify-between"><b.icon className="text-gold size-6" /><span className="font-display text-4xl text-gold/20">0{index + 1}</span></div>
                 <h3 className="mt-5 text-base leading-snug sm:text-lg">{b.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{b.text}</p>
               </article>
@@ -434,10 +436,10 @@ function LandingPage() {
       </section>
 
       {/* 4 — BÔNUS */}
-      <section className="section-pad relative px-5">
+      <section className="section-pad bonus-stage relative px-5">
         <div className="mx-auto max-w-5xl">
           <div className="text-center">
-            <span className="bg-gold-gradient inline-flex items-center gap-2 rounded-full px-5 py-2 text-xs font-extrabold tracking-[0.2em] text-primary-foreground uppercase">
+             <span className="bg-gold-gradient inline-flex items-center gap-2 rounded-md px-5 py-2 text-xs font-extrabold tracking-[0.2em] text-primary-foreground uppercase">
               <Gift className="size-4" /> Bônus especial
             </span>
             <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl">
@@ -478,7 +480,7 @@ function LandingPage() {
       </section>
 
       {/* 5 — OFERTA */}
-      <section id="oferta" className="section-pad px-5" style={{ backgroundColor: "var(--surface)" }}>
+      <section id="oferta" className="section-pad section-surface px-5">
         <div className="mx-auto max-w-5xl">
           <SectionTitle
             kicker="A oferta"
@@ -489,7 +491,7 @@ function LandingPage() {
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {itensOferta.map((item) => (
               <article key={item.nome} className="card-premium flex flex-col p-7">
-                <span className="text-gold self-start rounded-full border border-border px-3 py-1 text-[0.65rem] font-bold tracking-[0.2em] uppercase">
+                 <span className="text-gold self-start rounded-sm border border-border px-3 py-1 text-[0.65rem] font-bold tracking-[0.2em] uppercase">
                   {item.etiqueta}
                 </span>
                 <h3 className="mt-5 text-lg leading-snug sm:text-xl">{item.nome}</h3>
@@ -500,8 +502,8 @@ function LandingPage() {
             ))}
           </div>
 
-          <div className="card-premium shadow-gold mt-12 p-8 text-center sm:p-12">
-            <span className="bg-gold-gradient inline-flex items-center rounded-full px-5 py-2 text-xs font-extrabold tracking-[0.2em] text-primary-foreground uppercase">
+           <div className="pricing-stage card-premium shadow-gold mt-12 p-8 text-center sm:p-12">
+             <span className="bg-gold-gradient inline-flex items-center rounded-md px-5 py-2 text-xs font-extrabold tracking-[0.2em] text-primary-foreground uppercase">
               Oferta especial
             </span>
 
@@ -578,7 +580,7 @@ function LandingPage() {
       </section>
 
       {/* 7 — DEPOIMENTOS */}
-      <section className="section-pad px-5" style={{ backgroundColor: "var(--surface)" }}>
+      <section className="section-pad section-surface px-5">
         <div className="mx-auto max-w-6xl">
           <SectionTitle
             kicker="Depoimentos"
@@ -589,8 +591,7 @@ function LandingPage() {
             {depoimentos.map((d, i) => (
               <article
                 key={i}
-                className="rounded-2xl border border-border p-7"
-                style={{ backgroundColor: "var(--surface-2)" }}
+                className="showcase-card rounded-lg border border-border p-7"
               >
                 <div className="text-gold flex gap-1">
                   {Array.from({ length: 5 }).map((_, s) => (
@@ -640,7 +641,7 @@ function LandingPage() {
       </section>
 
       {/* 9 — FAQ */}
-      <section className="section-pad px-5" style={{ backgroundColor: "var(--surface)" }}>
+      <section className="section-pad section-surface px-5">
         <div className="mx-auto max-w-3xl">
           <SectionTitle kicker="Perguntas frequentes" title="Ainda com dúvidas?" />
           <div className="mt-12 space-y-4">
@@ -649,8 +650,7 @@ function LandingPage() {
               return (
                 <div
                   key={item.q}
-                  className="overflow-hidden rounded-2xl border border-border"
-                  style={{ backgroundColor: "var(--surface-2)" }}
+                   className="showcase-card overflow-hidden rounded-lg border border-border"
                 >
                   <button
                     type="button"
