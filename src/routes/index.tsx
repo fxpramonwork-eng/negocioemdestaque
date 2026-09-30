@@ -29,6 +29,7 @@ import bonusCalendario from "@/assets/bonus-calendario-conteudo.jpeg.asset.json"
 import depoimentoJuliana from "@/assets/depoimento-juliana.jpg";
 import depoimentoCamila from "@/assets/depoimento-camila.jpg";
 import depoimentoRafael from "@/assets/depoimento-rafael.jpg";
+import heroAvatar from "@/assets/negocio-em-destaque-avatar.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -339,40 +340,46 @@ function LandingPage() {
       <UrgencyBanner />
 
       {/* 1 — HERO */}
-      <section className="relative overflow-hidden px-5 pt-14 pb-16 sm:pt-20 md:pb-24">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
-          <div className="text-center md:text-left">
-            <span className="text-gold inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-[0.7rem] font-bold tracking-[0.2em] uppercase">
+      <section className="hero-campaign relative isolate overflow-hidden">
+        <div className="hero-atmosphere" aria-hidden="true">
+          <span className="hero-spark hero-spark-1" />
+          <span className="hero-spark hero-spark-2" />
+          <span className="hero-spark hero-spark-3" />
+          <span className="hero-spark hero-spark-4" />
+        </div>
+
+        <div className="hero-portrait" aria-hidden="true">
+          <img
+            src={heroAvatar.url}
+            alt=""
+            width={1024}
+            height={1536}
+            className="hero-portrait-image"
+          />
+        </div>
+        <div className="hero-image-fade" aria-hidden="true" />
+
+        <div className="relative z-10 mx-auto flex min-h-[calc(100svh-7rem)] max-w-6xl flex-col px-5 pt-12 pb-0 sm:pt-16 lg:justify-center lg:py-16">
+          <div className="hero-copy text-center lg:max-w-[56%] lg:text-left">
+            <span className="text-gold inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-4 py-2 text-[0.7rem] font-bold tracking-[0.2em] uppercase backdrop-blur-sm">
               <Sparkles className="size-3.5" /> Material digital
             </span>
-            <h1 className="mt-6 text-4xl leading-[0.95] sm:text-5xl md:text-6xl">
-              Coloque o seu <span className="text-gold-gradient">negócio em destaque</span> sem
-              começar tudo do zero
+            <h1 className="mt-6 text-4xl leading-[0.95] sm:text-5xl lg:text-6xl xl:text-7xl">
+              Coloque o seu <span className="text-gold-gradient">negócio em destaque</span> sem começar tudo do zero
             </h1>
-            <p className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0">
               Estratégias, templates, planilhas e checklists prontos para você organizar sua
               presença digital e transmitir a imagem profissional que o seu trabalho merece.
             </p>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <div className="material-float relative w-full">
-              <div className="bg-gold-gradient absolute -inset-4 rounded-[2.5rem] opacity-20 blur-2xl" />
-              <img
-                src={capaAsset.url}
-                alt="Negócio em Destaque com artes profissionais editáveis exibidas em notebook e celular"
-                width={1024}
-                height={768}
-                className="shadow-card relative mx-auto aspect-[4/3] w-full max-w-lg rounded-3xl border border-border object-cover"
-              />
-            </div>
-            <div className="relative z-10 mt-8 flex w-full flex-col items-center gap-4">
+            <div className="mt-8 flex w-full flex-col items-center gap-4 lg:items-start">
               <CtaButton>Quero conhecer</CtaButton>
               <p className="text-xs tracking-wide text-muted-foreground uppercase">
-                Acesso imediato · Garantia de 7 dias
+                Acesso imediato • Garantia de 7 dias
               </p>
             </div>
           </div>
+
+          <div className="hero-mobile-spacer" aria-hidden="true" />
         </div>
       </section>
 
