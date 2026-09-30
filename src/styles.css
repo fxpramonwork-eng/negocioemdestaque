@@ -42,29 +42,29 @@
   --color-gold-deep: var(--gold-deep);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
-  --font-display: "Anton", "Archivo Black", sans-serif;
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bebas Neue", "Arial Narrow", sans-serif;
+  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --radius: 1rem;
-  --background: oklch(0.14 0.008 90);
-  --foreground: oklch(0.97 0.006 90);
-  --surface: oklch(0.18 0.012 90);
-  --surface-2: oklch(0.23 0.018 88);
-  --card: oklch(0.19 0.012 90);
+  --radius: 0.5rem;
+  --background: oklch(0.125 0.008 72);
+  --foreground: oklch(0.97 0.025 95);
+  --surface: oklch(0.17 0.016 69);
+  --surface-2: oklch(0.205 0.018 70);
+  --card: oklch(0.17 0.016 69);
   --card-foreground: oklch(0.97 0.006 90);
   --popover: oklch(0.19 0.012 90);
   --popover-foreground: oklch(0.97 0.006 90);
-  --gold: oklch(0.82 0.15 88);
-  --gold-soft: oklch(0.92 0.09 95);
-  --gold-deep: oklch(0.66 0.14 72);
-  --primary: oklch(0.82 0.15 88);
+  --gold: oklch(0.81 0.16 87);
+  --gold-soft: oklch(0.95 0.07 96);
+  --gold-deep: oklch(0.68 0.15 74);
+  --primary: oklch(0.81 0.16 87);
   --primary-foreground: oklch(0.16 0.01 90);
   --secondary: oklch(0.23 0.018 88);
   --secondary-foreground: oklch(0.97 0.006 90);
   --muted: oklch(0.23 0.014 90);
-  --muted-foreground: oklch(0.73 0.015 90);
+  --muted-foreground: oklch(0.76 0.018 85);
   --accent: oklch(0.28 0.03 85);
   --accent-foreground: oklch(0.95 0.04 92);
   --destructive: oklch(0.6 0.22 27);
@@ -85,7 +85,7 @@
     oklch(0.14 0.008 90) 70%
   );
   --shadow-gold: 0 18px 50px -18px oklch(0.82 0.15 88 / 45%);
-  --shadow-card: 0 20px 45px -24px oklch(0 0 0 / 80%);
+  --shadow-card: 0 18px 42px -24px oklch(0 0 0 / 92%);
 }
 
 @layer base {
@@ -107,7 +107,7 @@
     font-family: var(--font-display);
     letter-spacing: 0.01em;
     text-transform: uppercase;
-    line-height: 0.95;
+    line-height: 1;
   }
 }
 
@@ -134,9 +134,9 @@
 }
 
 @utility card-premium {
-  background-color: var(--surface);
+  background: linear-gradient(145deg, var(--surface-2), var(--surface));
   border: 1px solid var(--border);
-  border-radius: var(--radius-2xl);
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
 }
 
@@ -244,8 +244,9 @@
 .hero-campaign {
   min-height: calc(100svh - 7rem);
   background:
-    radial-gradient(ellipse 60% 65% at 77% 48%, oklch(0.66 0.14 72 / 20%), transparent 68%),
-    linear-gradient(115deg, var(--background) 0%, oklch(0.12 0.018 68) 48%, oklch(0.1 0.012 80) 100%);
+    radial-gradient(ellipse 54% 62% at 79% 46%, oklch(0.68 0.15 74 / 24%), transparent 68%),
+    linear-gradient(115deg, var(--background) 0%, oklch(0.105 0.012 70) 48%, oklch(0.085 0.01 75) 100%);
+  border-bottom: 1px solid var(--border);
 }
 
 .hero-portrait {
@@ -269,7 +270,7 @@
   inset: 0;
   z-index: 3;
   pointer-events: none;
-  background: linear-gradient(90deg, var(--background) 0%, var(--background) 34%, oklch(0.14 0.008 90 / 88%) 46%, transparent 72%);
+  background: linear-gradient(90deg, var(--background) 0%, var(--background) 31%, oklch(0.125 0.008 72 / 90%) 44%, transparent 73%);
 }
 
 .hero-atmosphere {
@@ -299,6 +300,50 @@
   display: none;
 }
 
+.section-surface {
+  background-color: var(--surface);
+  border-block: 1px solid var(--border);
+}
+
+.showcase-card {
+  background: linear-gradient(145deg, var(--surface-2), var(--surface));
+  box-shadow: var(--shadow-card);
+}
+
+.showcase-card,
+.card-premium {
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.showcase-card:hover,
+.card-premium:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold-deep);
+  box-shadow: var(--shadow-card), 0 0 28px oklch(0.81 0.16 87 / 9%);
+}
+
+.bonus-stage {
+  background: radial-gradient(circle at 50% 20%, oklch(0.68 0.15 74 / 12%), transparent 40%);
+}
+
+.pricing-stage {
+  position: relative;
+  overflow: hidden;
+  border-color: var(--gold-deep);
+}
+
+.pricing-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--gradient-gold);
+}
+
+.urgency-bar {
+  box-shadow: 0 10px 35px oklch(0 0 0 / 35%);
+}
+
 @media (max-width: 1023px) {
   .hero-campaign {
     min-height: auto;
@@ -315,7 +360,7 @@
   }
 
   .hero-image-fade {
-    background: linear-gradient(180deg, var(--background) 0%, oklch(0.14 0.008 90 / 88%) 18%, transparent 48%, oklch(0.14 0.008 90 / 44%) 100%);
+    background: linear-gradient(180deg, var(--background) 0%, oklch(0.125 0.008 72 / 90%) 18%, transparent 48%, oklch(0.125 0.008 72 / 48%) 100%);
   }
 
   .hero-mobile-spacer {
@@ -401,6 +446,11 @@
   }
 
   .material-image {
+    transition: none;
+  }
+
+  .showcase-card,
+  .card-premium {
     transition: none;
   }
 }
