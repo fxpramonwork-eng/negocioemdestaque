@@ -28,7 +28,7 @@ import bonusCalendario from "@/assets/bonus-calendario-conteudo.jpeg.asset.json"
 import depoimentoJuliana from "@/assets/depoimento-juliana.jpg";
 import depoimentoCamila from "@/assets/depoimento-camila.jpg";
 import depoimentoRafael from "@/assets/depoimento-rafael.jpg";
-import heroAvatar from "@/assets/negocio-em-destaque-avatar.png.asset.json";
+import heroAvatar from "@/assets/hero-avatar-infinito.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -349,7 +349,7 @@ function LandingPage() {
 
         <div className="hero-portrait" aria-hidden="true">
           <img
-            src={heroAvatar.url}
+            src={heroAvatar}
             alt=""
             width={1024}
             height={1536}
