@@ -10,4 +10,4 @@
 <!-- LOVABLE:END -->
 
 - App media uploaded by users is stored as Lovable Assets JSON pointers to keep binaries out of the repository.
-- The sales page uses a black-and-gold storefront system with Bebas Neue headings and Barlow body text to match the approved premium direction.
+- The sales page uses an editorial black-and-gold launch system with monumental Bebas Neue headings, Barlow body text, squared panels, and alternating high-contrast sections because this matches the approved sales-page reference.
