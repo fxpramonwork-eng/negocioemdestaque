@@ -19,7 +19,6 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-import capaAsset from "@/assets/negocio-em-destaque-novo.png.asset.json";
 import templateData from "@/assets/template-data.jpg.asset.json";
 import templateProduto from "@/assets/template-produto.jpg.asset.json";
 import templateDicaLivro from "@/assets/template-dica-livro.jpg.asset.json";
