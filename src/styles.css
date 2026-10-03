@@ -97,7 +97,7 @@
 .hero-grid { position: absolute; inset: 0; opacity: .16; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 80px 80px; mask-image: linear-gradient(to right, black, transparent 68%); }
 .hero-person { position: absolute; z-index: -1; inset: 0 0 0 45%; }
 .hero-person img { width: 100%; height: 100%; object-fit: contain; object-position: right bottom; filter: contrast(1.06) saturate(.92); animation: hero-drift 7s ease-in-out infinite; }
-.hero-shade { position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, var(--background) 0%, var(--background) 35%, oklch(0.095 0.006 78 / 88%) 50%, transparent 74%), linear-gradient(0deg, var(--background) 0%, transparent 24%); }
+.hero-shade { position: absolute; z-index: -1; inset: 0; background: radial-gradient(ellipse 72% 86% at 78% 52%, oklch(0.9 0.11 91 / 28%) 0%, oklch(0.82 0.15 86 / 23%) 22%, oklch(0.7 0.12 82 / 13%) 46%, transparent 76%), linear-gradient(90deg, var(--background) 0%, var(--background) 35%, oklch(0.095 0.006 78 / 91%) 49%, oklch(0.095 0.006 78 / 38%) 66%, transparent 82%), linear-gradient(0deg, var(--background) 0%, transparent 28%); }
 .hero-inner { width: min(1160px, calc(100% - 2.5rem)); min-height: min(900px, calc(100svh - 88px)); margin: auto; display: flex; align-items: center; }
 .hero-copy { width: 54%; padding-block: 4rem; }
 .brand-lockup { display: flex; align-items: center; gap: .7rem; color: var(--foreground); text-transform: uppercase; }
@@ -249,7 +249,7 @@ footer { padding-block: 2.5rem; background: var(--background); }
   .hero-description { max-width: 570px; }
   .hero-person { position: relative; z-index: -1; inset: auto; height: min(780px, 120vw); margin-top: -3rem; }
   .hero-person img { object-position: center bottom; }
-  .hero-shade { background: linear-gradient(180deg, var(--background) 0%, var(--background) 42%, transparent 61%, var(--background) 100%); }
+  .hero-shade { background: radial-gradient(ellipse 88% 43% at 50% 78%, oklch(0.9 0.11 91 / 28%) 0%, oklch(0.82 0.15 86 / 22%) 25%, oklch(0.7 0.12 82 / 12%) 50%, transparent 78%), linear-gradient(180deg, var(--background) 0%, var(--background) 40%, oklch(0.095 0.006 78 / 88%) 49%, transparent 64%, oklch(0.095 0.006 78 / 78%) 92%, var(--background) 100%); }
   .statement-grid { grid-template-columns: 1fr 2fr; }
   .statement-copy { grid-column: 2; }
   .deliverables-grid { grid-template-columns: repeat(2, 1fr); }
