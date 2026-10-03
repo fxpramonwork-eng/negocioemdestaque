@@ -30,7 +30,7 @@ import bonusCalendario from "@/assets/bonus-calendario-conteudo.jpeg.asset.json"
 import depoimentoJuliana from "@/assets/depoimento-juliana.jpg";
 import depoimentoCamila from "@/assets/depoimento-camila.jpg";
 import depoimentoRafael from "@/assets/depoimento-rafael.jpg";
-import heroAvatar from "@/assets/hero-avatar-infinito.png";
+import heroAvatar from "@/assets/hero-mockup.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -178,7 +178,7 @@ function LandingPage() {
       <section className="hero">
         <div className="hero-grid" aria-hidden="true" />
         <div className="hero-person" aria-hidden="true">
-          <img src={heroAvatar} alt="" width={1200} height={1800} />
+          <img src={heroAvatar.url} alt="" width={1365} height={768} />
         </div>
         <div className="hero-shade" aria-hidden="true" />
         <div className="hero-inner">
